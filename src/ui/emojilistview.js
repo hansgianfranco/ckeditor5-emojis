@@ -10,7 +10,7 @@
 import View from '@ckeditor/ckeditor5-ui/src/view';
 import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 import ViewCollection from '@ckeditor/ckeditor5-ui/src/viewcollection';
-
+import Template from '@ckeditor/ckeditor5-ui/src/template';
 import FocusTracker from '@ckeditor/ckeditor5-utils/src/focustracker';
 import FocusCycler from '@ckeditor/ckeditor5-ui/src/focuscycler';
 import KeystrokeHandler from '@ckeditor/ckeditor5-utils/src/keystrokehandler';
@@ -50,12 +50,13 @@ export default class EmojiListView extends View {
 		this.emojiButtonViews = new ViewCollection( editor.locale );
 		this.emojiButtonPeopleViews = new ViewCollection( editor.locale );
 		this.emojiButtonNatureViews = new ViewCollection( editor.locale );
-		this.emojiButtonFoodViews = new ViewCollection( editor.locale );
-		this.emojiButtonTravelViews = new ViewCollection( editor.locale );
-		this.emojiButtonActivitiesViews = new ViewCollection( editor.locale );
+		//this.emojiButtonFoodViews = new ViewCollection( editor.locale );
+		//this.emojiButtonTravelViews = new ViewCollection( editor.locale );
+		//this.emojiButtonActivitiesViews = new ViewCollection( editor.locale );
 		this.emojiButtonSymbolsViews = new ViewCollection( editor.locale );
 		this.emojiButtonObjectsViews = new ViewCollection( editor.locale );
-		this.emojiButtonFlagsViews = new ViewCollection( editor.locale );
+		this.emojiButtonPlacesViews = new ViewCollection( editor.locale );
+		//this.emojiButtonFlagsViews = new ViewCollection( editor.locale );
 		/**
 		 * The Smile button view.
 		 *
@@ -65,36 +66,40 @@ export default class EmojiListView extends View {
 			//this.emojiButtonViews.add( this._createButton( emoji.text, 'emoji:' + emoji.name ) );
 
 			if(emoji.group === 'people'){
-				this.emojiButtonPeopleViews.add( this._createButton( emoji.text, 'emoji:' + emoji.name ) );
+				this.emojiButtonPeopleViews.add( this._createButton( emoji.image, 'emoji:' + emoji.name ) );
 			}
 
 			if(emoji.group === 'nature'){
-				this.emojiButtonNatureViews.add( this._createButton( emoji.text, 'emoji:' + emoji.name ) );
+				this.emojiButtonNatureViews.add( this._createButton( emoji.image, 'emoji:' + emoji.name ) );
 			}
 
-			if(emoji.group === 'food'){
-				this.emojiButtonFoodViews.add( this._createButton( emoji.text, 'emoji:' + emoji.name ) );
+			/*if(emoji.group === 'food'){
+				this.emojiButtonFoodViews.add( this._createButton( emoji.image, 'emoji:' + emoji.name ) );
 			}
 
 			if(emoji.group === 'travel'){
-				this.emojiButtonTravelViews.add( this._createButton( emoji.text, 'emoji:' + emoji.name ) );
+				this.emojiButtonTravelViews.add( this._createButton( emoji.image, 'emoji:' + emoji.name ) );
 			}
 
 			if(emoji.group === 'activities'){
-				this.emojiButtonActivitiesViews.add( this._createButton( emoji.text, 'emoji:' + emoji.name ) );
-			}
+				this.emojiButtonActivitiesViews.add( this._createButton( emoji.image, 'emoji:' + emoji.name ) );
+			}*/
 
 			if(emoji.group === 'symbols'){
-				this.emojiButtonSymbolsViews.add( this._createButton( emoji.text, 'emoji:' + emoji.name ) );
+				this.emojiButtonSymbolsViews.add( this._createButton( emoji.image, 'emoji:' + emoji.name ) );
+			}
+
+			if(emoji.group === 'places'){
+				this.emojiButtonPlacesViews.add( this._createButton( emoji.image, 'emoji:' + emoji.name ) );
 			}
 
 			if(emoji.group === 'objects'){
-				this.emojiButtonObjectsViews.add( this._createButton( emoji.text, 'emoji:' + emoji.name ) );
+				this.emojiButtonObjectsViews.add( this._createButton( emoji.image, 'emoji:' + emoji.name ) );
 			}
 
-			if(emoji.group === 'flags'){
-				this.emojiButtonFlagsViews.add( this._createButton( emoji.text, 'emoji:' + emoji.name ) );
-			}
+			/*if(emoji.group === 'flags'){
+				this.emojiButtonFlagsViews.add( this._createButton( emoji.image, 'emoji:' + emoji.name ) );
+			}*/
 		} );
 
 		/**
@@ -202,7 +207,7 @@ export default class EmojiListView extends View {
 									]
 
 								},
-								{
+								/*{
 									tag: 'a',
 
 									attributes: {
@@ -260,7 +265,7 @@ export default class EmojiListView extends View {
 										'⚽'
 									]
 
-								},
+								},*/
 								{
 									tag: 'a',
 
@@ -281,7 +286,7 @@ export default class EmojiListView extends View {
 									]
 
 								},
-								{
+								/*{
 									tag: 'a',
 
 									attributes: {
@@ -300,8 +305,27 @@ export default class EmojiListView extends View {
 										'🎌'
 									]
 
-								},
+								},*/
+								{
+									tag: 'a',
 
+									attributes: {
+										class: [
+											'nav-item',
+											'nav-link'
+										],
+										href: '#nav-places',
+										role: 'tab',
+										'data-toggle': 'tab',
+										'aria-controls': 'nav-places',
+										'aria-selected': false
+									},
+
+									children: [
+										'🎌'
+									]
+
+								},
 
 							]
 						}
@@ -324,7 +348,6 @@ export default class EmojiListView extends View {
 								class: [
 									'tab-pane',
 									'fade',
-									'show',
 									'in',
 									'active'
 								],
@@ -368,7 +391,7 @@ export default class EmojiListView extends View {
 								}
 							]
 						},
-						{
+						/*{
 							tag: 'div',
 
 							attributes: {
@@ -439,7 +462,7 @@ export default class EmojiListView extends View {
 									children: this.emojiButtonActivitiesViews
 								}
 							]
-						},
+						},*/
 						{
 							tag: 'div',
 
@@ -464,7 +487,7 @@ export default class EmojiListView extends View {
 								}
 							]
 						},
-						{
+						/*{
 							tag: 'div',
 
 							attributes: {
@@ -485,6 +508,30 @@ export default class EmojiListView extends View {
 										]
 									},
 									children: this.emojiButtonFlagsViews
+								}
+							]
+						}*/
+						{
+							tag: 'div',
+
+							attributes: {
+								class: [
+									'tab-pane',
+									'fade'
+								],
+								id: 'nav-places',
+								role: 'tabpanel',
+							},
+							children: [
+								{
+									tag: 'div',
+
+									attributes: {
+										class: [
+											'ck-emoji__actions'
+										]
+									},
+									children: this.emojiButtonPlacesViews
 								}
 							]
 						}
@@ -535,9 +582,17 @@ export default class EmojiListView extends View {
 	 */
 	_createButton( label, eventName ) {
 		const button = new ButtonView( this.locale );
+		const buttonImg = new ButtonView( this.locale );
+		buttonImg.setTemplate({
+			tag: 'img',
+			attributes: {
+				src: label
+			}
+		});
 
-		button.label = label;
-		button.withText = true;
+		button.withText = false;
+		button.children.add(buttonImg);
+		//collection.setParent( parentView.element );
 
 		if ( eventName ) {
 			button.delegate( 'execute' ).to( this, eventName );

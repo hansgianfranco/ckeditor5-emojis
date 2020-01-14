@@ -84,8 +84,24 @@ export default class Emoji extends Plugin {
 
 		editor.config.get( 'emoji' ).forEach( emoji => {
 			this.listenTo( emojiView, 'emoji:' + emoji.name, () => {
+				const emojiImg = document.createElement('img');
+				emojiImg.src = emoji.image;
+				console.log(emoji.image);
+				console.log(emojiImg);
 				editor.model.change( writer => {
-					writer.insertText( emoji.text, editor.model.document.selection.getFirstPosition() );
+					//const emojiImg = writer.createElement('image', {
+					//	src: emoji.image
+					//});
+					//emojiImg.className = "emoji";
+					//emojiImg.alt = "///"+emoji.value+"///";
+					//emojiImg.height = "30";
+					//emojiImg.width = "30";
+					//writer.insertText( emojiImg, editor.model.document.selection.getFirstPosition() );
+					//const currentAttributes = editor.model.document.selection.getAttributes();
+					//editor.model.insertContent(emojiImg, currentAttributes);
+					const viewFragment = editor.data.processor.toView(emojiImg.InnerHTML);
+					const modelFragment = editor.data.toModel(viewFragment);
+					editor.model.insertContent(modelFragment);
 					this._hidePanel();
 				} );
 			} );
