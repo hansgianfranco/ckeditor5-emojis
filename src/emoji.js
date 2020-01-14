@@ -84,24 +84,22 @@ export default class Emoji extends Plugin {
 
 		editor.config.get( 'emoji' ).forEach( emoji => {
 			this.listenTo( emojiView, 'emoji:' + emoji.name, () => {
-				const emojiImg = document.createElement('img');
-				emojiImg.src = emoji.image;
-				console.log(emoji.image);
-				console.log(emojiImg);
+				//const emojiImg = document.createElement('span');
+				//emojiImg.style.backgroundImage = "url('"+emoji.image+"');";
 				editor.model.change( writer => {
-					//const emojiImg = writer.createElement('image', {
-					//	src: emoji.image
-					//});
+					//writer.insertText( emoji.code_decimal, editor.model.document.selection.getFirstPosition() );
 					//emojiImg.className = "emoji";
 					//emojiImg.alt = "///"+emoji.value+"///";
 					//emojiImg.height = "30";
 					//emojiImg.width = "30";
-					//writer.insertText( emojiImg, editor.model.document.selection.getFirstPosition() );
+					//
 					//const currentAttributes = editor.model.document.selection.getAttributes();
 					//editor.model.insertContent(emojiImg, currentAttributes);
-					const viewFragment = editor.data.processor.toView(emojiImg.InnerHTML);
+					//const content = emojiImg.outerHTML;
+					const content = emoji.code_decimal;
+					const viewFragment = editor.data.processor.toView(content);
 					const modelFragment = editor.data.toModel(viewFragment);
-					editor.model.insertContent(modelFragment);
+					editor.model.insertContent(modelFragment, editor.model.document.selection);
 					this._hidePanel();
 				} );
 			} );
