@@ -96,7 +96,7 @@ export default class Emoji extends Plugin {
 					//const currentAttributes = editor.model.document.selection.getAttributes();
 					//editor.model.insertContent(emojiImg, currentAttributes);
 					//const content = emojiImg.outerHTML;
-					const content = emoji.code_decimal;
+					const content = emoji.code;
 					const viewFragment = editor.data.processor.toView(content);
 					const modelFragment = editor.data.toModel(viewFragment);
 					editor.model.insertContent(modelFragment, editor.model.document.selection);
