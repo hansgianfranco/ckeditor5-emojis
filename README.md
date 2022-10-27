@@ -18,7 +18,7 @@ Since this is a third-party plugin, it is not enabled by default in CKEditor 5 a
 To install it, run:
 
 ```
-npm install --save ckeditor5-emoji
+npm install --save ckeditor5-emojis
 ```
 
 ### Development environment
@@ -30,7 +30,7 @@ To enable the plugin you amy also setup a local [development environment](https:
 The list of Emojis is configurable via `config.emoji`:
 
 ```js
-import Emoji from 'ckeditor5-emoji/src/emoji';
+import Emoji from 'ckeditor5-emojis/src/emoji';
 
 ClassicEditor
     .create( document.querySelector( '#editor' ), {
